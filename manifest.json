@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "GX Free Games Finder",
+  "version": "1.0",
+  "description": "Affiche les jeux payants actuellement gratuits.",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.gamerpower.com/*"
+  ]
+}
