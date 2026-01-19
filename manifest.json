@@ -4,7 +4,10 @@
   "version": "1.0",
   "description": "Affiche les jeux payants actuellement gratuits.",
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icon.png"
+    }
   },
   "options_ui": {
     "page": "options.html",
