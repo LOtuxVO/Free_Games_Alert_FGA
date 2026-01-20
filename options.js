@@ -17,5 +17,27 @@ function restoreOptions() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', restoreOptions);
+function resetSeenGames() {
+  chrome.storage.local.remove('seen_games', function() {
+    const status = document.getElementById('status');
+    status.textContent = 'Historique des jeux vus effacé.';
+    setTimeout(function() {
+      status.textContent = '';
+    }, 2000);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  restoreOptions();
+
+  // Ajout dynamique du bouton de réinitialisation à côté du bouton Sauvegarder
+  const saveBtn = document.getElementById('save');
+  if (saveBtn) {
+    const resetBtn = document.createElement('button');
+    resetBtn.textContent = 'Réinitialiser les jeux "Vus"';
+    resetBtn.style.marginLeft = '10px';
+    resetBtn.addEventListener('click', resetSeenGames);
+    saveBtn.parentNode.insertBefore(resetBtn, saveBtn.nextSibling);
+  }
+});
 document.getElementById('save').addEventListener('click', saveOptions);

@@ -18,6 +18,8 @@
     "service_worker": "background.js"
   },
   "host_permissions": [
-    "https://www.gamerpower.com/*"
+    "https://www.gamerpower.com/*",
+    "https://store-site-backend-static.ak.epicgames.com/*",
+    "https://epicgames.com/*"
   ]
 }
