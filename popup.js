@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   filterSelect.addEventListener('change', (e) => {
     platformFilter = e.target.value;
+    chrome.storage.local.set({ filter_preference: platformFilter });
     loadGames(false); // Rechargement de l'affichage (utilise le cache)
   });
 
@@ -293,5 +294,11 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Chargement initial
-  loadGames();
+  chrome.storage.local.get(['filter_preference'], (result) => {
+    if (result.filter_preference) {
+      platformFilter = result.filter_preference;
+      filterSelect.value = platformFilter;
+    }
+    loadGames();
+  });
 });
