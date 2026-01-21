@@ -48,7 +48,11 @@ function updateBadgeFromCache() {
         iconUrl: 'icon.png',
         title: 'Nouveaux jeux gratuits !',
         message: `${count} jeux sont disponibles (dont ${count - lastCount} nouveaux).`,
-        priority: 1
+        priority: 2
+      }, (notificationId) => {
+        setTimeout(() => {
+          chrome.notifications.clear(notificationId);
+        }, 3000);
       });
     }
 

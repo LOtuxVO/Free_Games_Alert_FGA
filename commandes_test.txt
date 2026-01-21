@@ -1,0 +1,7 @@
+Pour tester les notifs : 
+
+chrome.storage.local.set({ last_unseen_count: -1 });
+
+chrome.storage.local.get(['currency'], (res) => {
+    chrome.storage.local.set({ currency: res.currency === 'USD' ? 'EUR' : 'USD' });
+});
