@@ -6,11 +6,13 @@ const RATE_USD_EUR = 0.92;
 // Fonction pour recalculer le badge à partir du cache (sans appel API)
 // Cette fonction est appelée dès que les données changent (via popup ou background)
 function updateBadgeFromCache() {
-  chrome.storage.local.get([CACHE_KEY, EPIC_CACHE_KEY, SEEN_GAMES_KEY, 'currency'], (result) => {
+  chrome.storage.local.get([CACHE_KEY, EPIC_CACHE_KEY, SEEN_GAMES_KEY, 'currency', 'notifications_enabled', 'last_unseen_count'], (result) => {
     const steamGames = result[CACHE_KEY]?.data || [];
     const epicGames = result[EPIC_CACHE_KEY]?.data || [];
     const seenGames = result[SEEN_GAMES_KEY] || [];
     const currency = result.currency || 'USD';
+    const notificationsEnabled = result.notifications_enabled !== false; // Activé par défaut
+    const lastCount = result.last_unseen_count;
 
     // On combine tous les jeux
     const allGames = [...steamGames, ...epicGames];
@@ -37,6 +39,23 @@ function updateBadgeFromCache() {
 
     chrome.action.setBadgeText({ text: count > 0 ? count.toString() : '' });
     chrome.action.setBadgeBackgroundColor({ color: color });
+
+    // Gestion de la notification
+    // Si activé, qu'on a un historique (pas premier lancement), et qu'il y a plus de jeux qu'avant
+    if (notificationsEnabled && typeof lastCount === 'number' && count > lastCount) {
+      chrome.notifications.create({
+        type: 'basic',
+        iconUrl: 'icon.png',
+        title: 'Nouveaux jeux gratuits !',
+        message: `${count} jeux sont disponibles (dont ${count - lastCount} nouveaux).`,
+        priority: 1
+      });
+    }
+
+    // Mise à jour du compteur pour la prochaine comparaison
+    if (count !== lastCount) {
+      chrome.storage.local.set({ 'last_unseen_count': count });
+    }
   });
 }
 
@@ -74,7 +93,10 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 // Réagit aux changements de cache (venant du background ou de la popup) ou de statut "vu"
 chrome.storage.onChanged.addListener((changes, namespace) => {
   if (namespace === 'local') {
-    if (changes[CACHE_KEY] || changes[EPIC_CACHE_KEY] || changes[SEEN_GAMES_KEY] || changes['currency']) {
+    // On ignore les changements de 'last_unseen_count' pour éviter une boucle (car updateBadgeFromCache le modifie)
+    if (changes['last_unseen_count'] && Object.keys(changes).length === 1) return;
+
+    if (changes[CACHE_KEY] || changes[EPIC_CACHE_KEY] || changes[SEEN_GAMES_KEY] || changes['currency'] || changes['notifications_enabled']) {
       updateBadgeFromCache();
     }
   }

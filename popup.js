@@ -95,10 +95,10 @@ document.addEventListener('DOMContentLoaded', function() {
   filterSelect.addEventListener('change', (e) => {
     platformFilter = e.target.value;
     chrome.storage.local.set({ filter_preference: platformFilter });
-    loadGames(false); // Rechargement de l'affichage (utilise le cache)
+    loadGames(false); // Rechargement de l'affichage
   });
 
-  // --- GESTION DU MENU PARAMÈTRES ---
+  // GESTION DU MENU PARAMÈTRES
 
   // Transformation du bouton devise en bouton paramètres
   const settingsBtn = currencyBtn.cloneNode(true);
@@ -117,6 +117,10 @@ document.addEventListener('DOMContentLoaded', function() {
       <button id="setting-currency-toggle" class="btn-action">USD</button>
     </div>
     <div class="settings-item">
+      <span class="settings-label">Notifications</span>
+      <button id="setting-notif-toggle" class="btn-action">ON</button>
+    </div>
+    <div class="settings-item">
       <span class="settings-label">Historique</span>
       <button id="setting-reset-seen" class="btn-action btn-danger">Réinitialiser "Vus"</button>
     </div>
@@ -124,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
   gameList.parentNode.appendChild(settingsView);
 
   const settingCurrencyBtn = settingsView.querySelector('#setting-currency-toggle');
+  const settingNotifBtn = settingsView.querySelector('#setting-notif-toggle');
   const settingResetBtn = settingsView.querySelector('#setting-reset-seen');
   const backBtn = settingsView.querySelector('.btn-back');
 
@@ -142,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     filterSelect.style.display = 'block';
     settingsBtn.style.visibility = 'visible';
     refreshBtn.style.visibility = 'visible';
-    loadGames(false); // Rafraîchir pour appliquer les changements (ex: devise)
+    loadGames(false); // Rafraîchir pour appliquer les changements
   });
 
   // Action: Réinitialiser les vus
@@ -153,7 +158,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Clé de stockage et durée du cache (1 heure en millisecondes)
+  // Action: Toggle Notifications
+  // Chargement état initial
+  chrome.storage.local.get(['notifications_enabled'], (res) => {
+    const enabled = res.notifications_enabled !== false; // true par défaut
+    settingNotifBtn.textContent = enabled ? 'ON' : 'OFF';
+  });
+
+  settingNotifBtn.addEventListener('click', () => {
+    chrome.storage.local.get(['notifications_enabled'], (res) => {
+      const newState = !(res.notifications_enabled !== false);
+      chrome.storage.local.set({ notifications_enabled: newState });
+      settingNotifBtn.textContent = newState ? 'ON' : 'OFF';
+    });
+  });
+
+  // Clé de stockage et durée du cache (1 heure en ms)
   const CACHE_KEY = 'steam_free_games_cache';
   const EPIC_CACHE_KEY = 'epic_games_cache';
   const SEEN_GAMES_KEY = 'seen_games';
