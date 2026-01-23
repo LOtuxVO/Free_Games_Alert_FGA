@@ -65,11 +65,29 @@ document.addEventListener('DOMContentLoaded', function() {
       border: 1px solid var(--border-color); padding: 1px 4px; border-radius: 3px; transition: color 0.4s ease, border-color 0.4s ease;
     }
     .btn-claim {
-      display: block; text-align: center; background-color: #4caf50; color: white; 
+      flex-grow: 1;
+      text-align: center; background-color: #4caf50; color: white; 
       text-decoration: none; padding: 6px; border-radius: 4px; font-size: 13px; 
       font-weight: 500; transition: background-color 0.2s;
     }
     .btn-claim:hover { background-color: #43a047; }
+    .game-actions { display: flex; gap: 8px; }
+    .btn-mark-seen {
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 5px 9px;
+      font-size: 13px;
+      line-height: 1;
+      transition: all 0.2s ease;
+    }
+    .btn-mark-seen:hover {
+      background: #f44336;
+      border-color: #f44336;
+      color: white;
+    }
     .game-item.seen { opacity: 0.6; }
     .game-item.seen .game-image { filter: grayscale(100%); }
     .game-item.seen::after {
@@ -298,25 +316,42 @@ document.addEventListener('DOMContentLoaded', function() {
             <span class="game-platform-badge">${platform}</span>
             <span class="game-price">Valeur: ${displayPrice}</span>
           </div>
-          <a href="${game.open_giveaway_url}" target="_blank" class="btn-claim">Obtenir Gratuitement</a>
+          <div class="game-actions">
+            <a href="${game.open_giveaway_url}" target="_blank" class="btn-claim">Obtenir Gratuitement</a>
+            <button class="btn-mark-seen" title="Marquer comme vu">✖</button>
+          </div>
         </div>
       `;
       gameList.appendChild(li);
 
       // Gestion du clic pour marquer comme vu
-      const btn = li.querySelector('.btn-claim');
-      if (btn) {
-        btn.addEventListener('click', () => {
-          li.classList.add('seen');
-          chrome.storage.local.get([SEEN_GAMES_KEY], (res) => {
-            const list = res[SEEN_GAMES_KEY] || [];
-            if (!list.includes(game.id)) {
-              list.push(game.id);
-              chrome.storage.local.set({ [SEEN_GAMES_KEY]: list });
-            }
-          });
+      const claimBtn = li.querySelector('.btn-claim');
+      const markSeenBtn = li.querySelector('.btn-mark-seen');
+
+      const markAsSeen = () => {
+        if (li.classList.contains('seen')) return;
+
+        li.classList.add('seen');
+        
+        // Si le filtre "non vus" est actif, on fait disparaître l'élément
+        if (platformFilter === 'not_seen') {
+          li.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+          li.style.opacity = '0';
+          li.style.transform = 'scale(0.95)';
+          setTimeout(() => li.remove(), 300);
+        }
+
+        chrome.storage.local.get([SEEN_GAMES_KEY], (res) => {
+          const list = res[SEEN_GAMES_KEY] || [];
+          if (!list.includes(game.id)) {
+            list.push(game.id);
+            chrome.storage.local.set({ [SEEN_GAMES_KEY]: list });
+          }
         });
-      }
+      };
+
+      if (claimBtn) claimBtn.addEventListener('click', markAsSeen);
+      if (markSeenBtn) markSeenBtn.addEventListener('click', markAsSeen);
     });
   }
 
