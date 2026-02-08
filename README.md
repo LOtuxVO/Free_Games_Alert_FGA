@@ -1,4 +1,4 @@
 Cette extension web permet de trouver, d'afficher, et de nous avertir lorsqu'un jeu normalement payant est actuellement gratuit sur Steam et/ou Epic Games.  
 Les différentes fonctionalités sont : une fonction de "vu", un compteur, l'affichage du titre, d'ou il vient(Steam ou Epic), d'une image, et du prix de base, ainsi qu'un mode sombre ou clair au choix et la devise(USD et EURO).  
-La liste se rafraichie toutes les heures automatiquement mais l'on peut également la rafraichire à la main.
+La liste se rafraichie toutes les heures automatiquement mais l'on peut également la rafraichire à la main.  
 Les paramètres définis reste sauvegardé que l'on ferme un onglet l'extension ou que l'on quitte notre navigateur, cela permet de ne pas avoir à refaire les paramètres à chaques fois que l'on utilise l'extension.  
