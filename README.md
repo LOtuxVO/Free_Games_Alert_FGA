@@ -7,7 +7,7 @@
 ## 🎮 Le Projet
 Cette extension web est ton "renard éclaireur" : elle surveille les boutiques **Steam** et **Epic Games** pour te prévenir dès qu'un jeu payant devient gratuit. Fini les bonnes affaires manquées !
 
-### 🛠️ Fonctionnalités
+## 🛠️ Fonctionnalités
 * **🔎 Tri des plateformes** : Recherche les jeux par plateformes (Steam et/ou Epic Games).
 * **👀 Système de "Vu"** : Identifie rapidement les nouveaux jeux ajoutés.
 * **📊 Compteur intégré** : Garde un œil sur le nombre d'offres disponibles.
@@ -26,7 +26,7 @@ Cette extension web est ton "renard éclaireur" : elle surveille les boutiques *
   <img src="https://img.shields.io/badge/Chrome_Extension-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white" />
 </p>
 
-## 📸 Aperçu de l'Interface :
+## 📸 Aperçus de l'Interface
 
 ## &nbsp;&nbsp;&nbsp;&nbsp;📱 Page : Liste des Jeux
 <table width="100%">
