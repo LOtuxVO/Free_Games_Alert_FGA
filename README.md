@@ -1,4 +1,4 @@
-## 🦊 Game Alert Extension
+## 🦊 Free Games Alert Extension (FGA)
 
 <div align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=B57EDC&center=true&vCenter=true&width=600&lines=Ne+ratez+plus+aucun+jeu+gratuit+!;Compatible+Steam+%26+Epic+Games+!;Mode+Sombre+%2F+Clair+inclus+!;Rafraîchissement+automatique+⚡" alt="TypingSVG"/>
