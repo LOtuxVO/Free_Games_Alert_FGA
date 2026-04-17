@@ -8,12 +8,13 @@
 Cette extension web est ton "renard éclaireur" : elle surveille les boutiques **Steam** et **Epic Games** pour te prévenir dès qu'un jeu payant devient gratuit. Fini les bonnes affaires manquées !
 
 ### 🛠️ Fonctionnalités
+* **🔎 Tri des plateformes** : Recherche les jeux par plateformes (Steam et/ou Epic Games).
 * **👀 Système de "Vu"** : Identifie rapidement les nouveaux jeux ajoutés.
 * **📊 Compteur intégré** : Garde un œil sur le nombre d'offres disponibles.
 * **🌓 Design Adaptatif** : Mode sombre ou clair selon tes préférences.
 * **💲 Gestion des Devises** : Choisis d'afficher les prix d'origine en **Euro (€)** ou en **US Dollar ($)**.
 * **🔔 Alertes Push** : Reçois une notification dès qu'un nouveau jeu est détecté pour être le premier sur le coup.
-* **💾 Sauvegarde Intelligente** : Tes paramètres (devise USD/EUR, thème) sont conservés même après fermeture du navigateur.
+* **💾 Sauvegarde Intelligente** : Tes paramètres (devise, thème) sont conservés même après fermeture du navigateur.
 * **🔄 Toujours à jour** : Rafraîchissement auto toutes les heures ou manuel en un clic.
 
 
@@ -32,11 +33,11 @@ Cette extension web est ton "renard éclaireur" : elle surveille les boutiques *
   <tr>
     <td width="50%" align="center">
       <b>☀️ Mode Clair</b><br>
-      <img src="URL_IMAGE_ICI" alt="Liste Jeu Mode Clair" width="100%"/>
+      <img src="./screenshots/liste_jeu_clair.png" alt="Liste Jeu Mode Clair" width="100%"/>
     </td>
     <td width="50%" align="center">
       <b>🌙 Mode Sombre</b><br>
-      <img src="URL_IMAGE_ICI" alt="Liste Jeu Mode Sombre" width="100%"/>
+      <img src="./screenshots/liste_jeu_sombre.png" alt="Liste Jeu Mode Sombre" width="100%"/>
     </td>
   </tr>
 </table>
@@ -46,11 +47,11 @@ Cette extension web est ton "renard éclaireur" : elle surveille les boutiques *
   <tr>
     <td width="50%" align="center">
       <b>☀️ Mode Clair</b><br>
-      <img src="URL_IMAGE_ICI" alt="Paramètre Mode Clair" width="100%"/>
+      <img src="./screenshots/parametre_clair.png" alt="Paramètre Mode Clair" width="100%"/>
     </td>
     <td width="50%" align="center">
       <b>🌙 Mode Sombre</b><br>
-      <img src="URL_IMAGE_ICI" alt="Paramètre Mode Sombre" width="100%"/>
+      <img src="./screenshots/parametre_sombre.png" alt="Paramètre Mode Sombre" width="100%"/>
     </td>
   </tr>
 </table>
