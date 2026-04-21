@@ -57,4 +57,5 @@ Cette extension web est ton "renard éclaireur" : elle surveille les boutiques *
 </table>
 
 ## 🌸 Keep Pushing
-> Si ce projet t'a aidé à agrandir ta bibliothèque de jeux, n'hésite pas à laisser une ⭐ sur le repo !  ©EdgarPullès
+> Si ce projet t'a aidé à agrandir ta bibliothèque de jeux, n'hésite pas à laisser une ⭐ sur le repo ! 
+> | ©EdgarPullès
