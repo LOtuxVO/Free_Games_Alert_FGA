@@ -8,14 +8,14 @@
 Cette extension web est ton "renard éclaireur" : elle surveille les boutiques **Steam** et **Epic Games** pour te prévenir dès qu'un jeu payant devient gratuit. Fini les bonnes affaires manquées !
 
 ## 🛠️ Fonctionnalités
-* **🔎 Tri des plateformes** : Recherche les jeux par plateformes (Steam et/ou Epic Games).
-* **👀 Système de "Vu"** : Identifie rapidement les nouveaux jeux ajoutés.
-* **📊 Compteur intégré** : Garde un œil sur le nombre d'offres disponibles.
-* **🌓 Design Adaptatif** : Mode sombre ou clair selon tes préférences.
-* **💲 Gestion des Devises** : Choisis d'afficher les prix d'origine en **Euro (€)** ou en **US Dollar ($)**.
-* **🔔 Alertes Push** : Reçois une notification dès qu'un nouveau jeu est détecté pour être le premier sur le coup.
-* **💾 Sauvegarde Intelligente** : Tes paramètres (devise, thème) sont conservés même après fermeture du navigateur.
-* **🔄 Toujours à jour** : Rafraîchissement auto toutes les heures ou manuel en un clic.
+* **🔎 Tri des plateformes** : Recherche les jeux par plateformes (Steam et/ou Epic Games)
+* **👀 Système de "Vu"** : Identifie rapidement les nouveaux jeux ajoutés
+* **📊 Compteur intégré** : Garde un œil sur le nombre d'offres disponibles
+* **🌓 Design Adaptatif** : Mode sombre ou clair selon tes préférences
+* **💲 Gestion des Devises** : Choisis d'afficher les prix d'origine en **Euro (€)** ou en **US Dollar ($)**
+* **🔔 Alertes Push** : Reçois une notification dès qu'un nouveau jeu est détecté pour être le premier sur le coup
+* **💾 Sauvegarde Intelligente** : Tes paramètres (devise, thème) sont conservés même après fermeture du navigateur
+* **🔄 Toujours à jour** : Rafraîchissement auto toutes les heures ou manuel en un clic
 
 
 ## 💻 Stack Technique
