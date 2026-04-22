@@ -130,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
       border-radius: 4px; cursor: pointer; transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
     }
     #btn-refresh:hover, #btn-currency:hover { background-color: var(--btn-hover); }
+    .settings-footer { text-align: center; margin-top: 30px; font-size: 11px; color: var(--text-main); opacity: 0.7; transition: color 0.4s ease; }
   `;
   document.head.appendChild(style);
 
@@ -192,6 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <span class="settings-label">Historique</span>
       <button id="setting-reset-seen" class="btn-action btn-danger">Réinitialiser "Vus"</button>
     </div>
+    <div class="settings-footer">©EdgarPullès</div>
   `;
   gameList.parentNode.appendChild(settingsView);
 
